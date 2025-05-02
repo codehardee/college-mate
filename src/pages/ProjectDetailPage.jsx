@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import Navbar from '../components/NavBar';
+import './ProjectPage.css'; // reuse the card styles
+
+const ProjectDetailPage = () => {
+  const { id } = useParams();
+  const [project, setProject] = useState(null);
+  const token = 'YOUR_JWT_TOKEN_HERE'; // replace with actual token
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/uploadProject/projects/${id}/`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+      .then(res => res.json())
+      .then(data => setProject(data))
+      .catch(err => console.error(err));
+  }, [id]);
+
+  if (!project) return <p>Loading project details...</p>;
+
+  return (
+    <div>
+      <Navbar />
+      <div className="projects-page">
+        <h1 className="page-title">{project.title}</h1>
+        <div className="project-card">
+          <h3>{project.title}</h3>
+          <p><strong>Skills:</strong> {project.skills}</p>
+          <p><strong>Scope:</strong> {project.scope}</p>
+          <p><strong>Price:</strong> {project.price}</p>
+          <p>{project.description}</p>
+          <Link to="/projects" className="btn">Back to Projects</Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectDetailPage;

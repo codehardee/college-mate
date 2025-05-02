@@ -1,0 +1,590 @@
+/* General Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #083d77, #00509e);
+  color: white;
+  height: 100vh;  /* Full screen height */
+  width: 100vw;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-top: 80px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  width: 80%;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+.hero button {
+  background-color: #f4d35e;
+  color: #00509e;
+  margin-top: 80px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+  margin-top: 20px;
+
+}
+
+.hero button:hover {
+  background-color: #e3b33f;
+  color: white;
+}
+
+/* How It Works Section */
+.how-it-works {
+  text-align: center;
+  padding: 40px 50px;
+  background-color: #f8f9fa;
+}
+
+
+.how-it-works .title{
+  font-size: 2.5rem;
+  font-weight: bold;  
+  margin-bottom: 20px;
+  color: #1e3c72;
+}
+
+.description {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.step {
+  width: 250px;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #1e3c72;
+}
+
+.step p {
+  font-size: 1rem;
+  color: #1e3c72;
+}
+
+
+/* Featured Projects */
+.featured-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 60px 10%;
+}
+
+.featured-projects .project-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.featured-projects .project-card:hover {
+  transform: scale(1.05);
+}
+
+.featured-projects .project-card h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.featured-projects .project-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer p {
+  font-size: 1rem;
+}
+
+/* Info Box Section */
+/* Info Box Section */
+.info-box {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.box {
+  position: static;
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  padding: 40px;
+  width: 90%; /* Make the box width larger */
+  max-width: 900px; /* Increase max width for more space */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.box h2 {
+  font-size: 2.7rem;
+  color: #333;
+  margin-bottom: 15px;
+  letter-spacing: -0.9px; 
+  line-height: 1;
+}
+
+.box p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: -0.9px; 
+  line-height: 1.1;
+}
+
+/* Images Section */
+.images {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: static;
+  margin-top: -190px;
+}
+
+.left-side, .right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.images img {
+  width: 100px; /* Make images larger */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px; /* Spacing between images */
+}
+
+.images img.left, .images img.right {
+  position: relative;
+  top: -60px; /* Lifts the images a bit above */
+}
+
+
+
+
+/* Changing Text Section */
+/* Changing Text Section */
+.changing-text {
+  font-size: 1.2rem;
+  color: #1e3c72;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Initial state for all p tags */
+.changing-text p {
+  position: absolute; /* Stack the texts on top of each other */
+  width: 100%;
+  opacity: 0; /* All p tags start as invisible */
+  visibility: hidden; /* Ensure all p tags are hidden initially */
+  font-size: 1.2rem;
+  color: #1e3c72;
+  font-style: italic;
+  margin: 10px 0;
+  transition: opacity 1s ease-in-out, visibility 0s linear 1s; /* Delay visibility until opacity transitions out */
+}
+
+/* Keyframes for fading the text in and out */
+@keyframes textFade {
+  0% {
+    opacity: 0;
+    visibility: hidden; /* Hide the element at the start */
+  }
+  5%, 95% {
+    opacity: 1;
+    visibility: visible; /* Make the text visible in the middle */
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden; /* Hide it again at the end */
+  }
+}
+
+/* Each p tag has a different animation delay to stagger the timing */
+.changing-text p:nth-child(1) {
+  animation: textFade 15s infinite;  /* Apply the textFade animation */
+  animation-delay: 0s;  /* First text starts immediately */
+}
+
+.changing-text p:nth-child(2) {
+  animation: textFade 15s infinite;  /* Apply the textFade animation */
+  animation-delay: 3s;  /* Second text starts after 3s */
+}
+
+.changing-text p:nth-child(3) {
+  animation: textFade 15s infinite;  /* Apply the textFade animation */
+  animation-delay: 6s;  /* Third text starts after 6s */
+}
+
+.changing-text p:nth-child(4) {
+  animation: textFade 15s infinite;  /* Apply the textFade animation */
+  animation-delay: 9s;  /* Fourth text starts after 9s */
+}
+
+.changing-text p:nth-child(5) {
+  animation: textFade 15s infinite;  /* Apply the textFade animation */
+  animation-delay: 12s;  /* Fifth text starts after 12s */
+}
+/* --------------------------------------------------------  */
+
+
+
+
+
+
+
+
+.image-text-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: -10px 20px;
+  background-color: #f9f9f9;
+}
+
+.image-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.text-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #083d77;
+}
+
+.text-container h3{
+  font-size: 1.5rem;
+  margin-top: 5px;
+  color: #083d77;
+}
+
+.text-container p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.button-group {
+  margin-top: 30px;
+}
+
+.btn-primary {
+  background-color: #083D77;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #062c5a;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #083D77;
+  padding: 10px 24px;
+  border: 2px solid #083D77;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* .btn-outline:hover {
+  background-color: #083D77;
+  color: white;
+} */
+
+/* ----------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .how-it-works .title {
+    font-size: 2rem;
+  }
+
+  .box h2 {
+    font-size: 2.2rem;
+  }
+
+  .box p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+    width: 90%;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .hero button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .featured-projects {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .info-box {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .image-container,
+  .text-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .how-it-works .title {
+    font-size: 1.6rem;
+  }
+
+  .step {
+    width: 100%;
+  }
+
+  .box h2 {
+    font-size: 1.8rem;
+  }
+
+  .box p {
+    font-size: 1rem;
+  }
+
+  .changing-text {
+    font-size: 1rem;
+  }
+}
+/* Mobile styles (default) — no media needed */
+
+/* Tablet (min-width: 600px) */
+@media (min-width: 600px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1.8rem;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .featured-projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-box {
+    flex-direction: row;
+  }
+
+  .image-container,
+  .text-container {
+    max-width: 50%;
+  }
+}
+
+/* Small laptop (min-width: 900px) */
+@media (min-width: 900px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 15px 40px;
+  }
+
+  .featured-projects {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 50px;
+  }
+
+  .box h2 {
+    font-size: 2.2rem;
+  }
+
+  .box p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Large laptop / desktop (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+  }
+
+  .navbar .logo {
+    font-size: 2rem;
+  }
+
+  .featured-projects {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 60px 10%;
+  }
+
+  .box h2 {
+    font-size: 2.7rem;
+  }
+
+  .box p {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,129 @@
+/* BidPage.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full-page flex wrapper */
+/* .bid-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  background-color: #f8fafc; 
+  padding: 20px; 
+} */
+
+
+.bid-page-container {
+  width: 100%;
+  max-width: 500px;
+  /* margin: 50px auto; */
+  /* justify-content: center; */
+  margin-left: 380px;
+  margin-top: 90px;
+  /* max-width: 600px; */
+  /* margin: 60px auto; */
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.bid-page-title {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #083d77;
+}
+
+.bid-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bid-form input,
+.bid-form textarea {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #cfd8dc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bid-form input:focus,
+.bid-form textarea:focus {
+  border-color: #083d77;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(8, 61, 119, 0.1);
+}
+
+.bid-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.bid-submit-button {
+  background-color: #083d77;
+  color: #ffffff;
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bid-submit-button:hover {
+  background-color: #062c5b;
+  transform: scale(1.02);
+}
+
+.success-message,
+.error-message {
+  margin-top: 30px;
+  padding: 18px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.success-message {
+  background-color: #e6f4ea;
+  color: #1b5e20;
+  border-left: 5px solid #43a047;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #b71c1c;
+  border-left: 5px solid #e53935;
+}
+
+.success-message h2,
+.error-message h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .bid-page-container {
+    padding: 30px 20px;
+  }
+
+  .bid-page-title {
+    font-size: 24px;
+  }
+
+  .bid-submit-button {
+    font-size: 0.95rem;
+  }
+}

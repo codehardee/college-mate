@@ -1,0 +1,98 @@
+/* Reset default margin & padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure body & html take full width */
+html, body {
+  width: 100%;
+}
+
+/* Navbar Styling */
+.navbar {
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 15px 50px;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Style Logo */
+.navbar .logo {
+  font-size: 2rem;  /* Bigger size */
+  font-weight: bold;
+}
+
+/* Remove list default styles */
+.nav-links {
+  list-style: none;
+  display: flex;  /* Make items row-wise */
+  gap: 20px;  /* Space between items */
+}
+
+/* Navbar Links */
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f4d35e; /* Highlight on hover */
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+  
+  .navbar .logo {
+    font-size: 1.6rem;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .nav-links li a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-links li a {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+}

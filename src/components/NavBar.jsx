@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./NavBar.css";
+import "./Navbar.css";
 import { clearTokens } from "../authHelpers";
 
 const Navbar = () => {

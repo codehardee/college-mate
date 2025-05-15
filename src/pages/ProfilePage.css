@@ -6,6 +6,7 @@
     background-color: #f8f9fa;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
+
   
   .profile-card img {
     width: 150px;
@@ -30,6 +31,8 @@
 .page-container {
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 100px;
+    margin-left: 300px;
     padding: 40px 20px;
     background-color: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -86,4 +89,90 @@
     background-color: #f8d7da;
     color: #721c24;
   }
+
+  /* 💻 Tablets (≤ 992px) */
+@media (max-width: 992px) {
+  .page-container {
+    margin-left: 100px;
+    padding: 30px 20px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .profile-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .profile-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* 📱 Small Tablets & Mobiles (≤ 768px) */
+@media (max-width: 768px) {
+  .page-container {
+    margin-left: 0;
+    margin-top: 80px;
+    padding: 25px 15px;
+    max-width: 90%;
+  }
+
+  .profile-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-card p {
+    font-size: 0.95rem;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .submit-button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+/* 📱 Mobile Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .page-container {
+    padding: 20px 10px;
+    margin-top: 60px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .profile-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .profile-card p {
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
   

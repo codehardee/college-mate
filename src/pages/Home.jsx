@@ -1,4 +1,3 @@
-// pages/Home.js
 import React from "react";
 import Navbar from "../components/NavBar";
 import "./Home.css";
@@ -8,8 +7,9 @@ import BackgroundSection from "../components/BackgroundSection";
 const Home = () => {
   return (
     <div className="home">
-      <Navbar />
+      {/* <Navbar /> */}
       <header className="hero">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <h1>Find or Post College Projects Easily</h1>
         <p>Connecting seniors with juniors for project collaborations.</p>
         <button>Get Started</button>
@@ -73,8 +73,6 @@ const Home = () => {
         </div>
       </section>
 
-
-      // Inside Home.js (or another component)
       <section className="image-text-section">
         <div className="image-container">
           <img src="cm1.jpg" alt="Visual" />

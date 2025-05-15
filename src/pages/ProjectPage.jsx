@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './ProjectPage.css';
 import Navbar from "../components/NavBar";
+import { AUTH_TOKEN } from '../authToken';
+
 
 const ProjectPage = () => {
   const [projects, setProjects] = useState([]);
@@ -15,7 +17,7 @@ const ProjectPage = () => {
     description: '',
   });
   const [error, setError] = useState(null);
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc5NDQ4MDM1LCJpYXQiOjE3NDM0NDgwMzUsImp0aSI6ImI4YTk5M2U3MzAyZjQ4MDU4Nzk1YTg0OTQ1YzM3NjlhIiwic3R1ZGVudF9pZCI6IjIzMjMyMyJ9.qbFx3H32UYmUF5SA-ngliPdUhfHKpYcGYdelCz9BTfs'; // replace with your actual token
+  const token = AUTH_TOKEN;
 
   // ✅ Fetch projects on load
   useEffect(() => {
@@ -85,15 +87,16 @@ const ProjectPage = () => {
                   ? project.description
                   : `${project.description.slice(0, 150)}...`}
               </p>
-              {/* <button
-                className="btn"
-                onClick={() => toggleReadMore(project.id)}
-              >
-                {expandedProjects.includes(project.id) ? 'Show Less' : 'Read More'}
-              </button> */}
-              <Link to={`/projects/${project.id}`} className="btn">
-                View Details
-              </Link>
+           
+              <div className="button-group">
+                <Link to={`/projects/${project.id}`} className="btn">
+                  View Details
+                </Link>
+                <Link to={`/bid?project_id=${project.id}`} className="btn btn-outline">
+                  Bid Now
+                </Link>
+              </div>
+
             </div>
           ))}
         </div>

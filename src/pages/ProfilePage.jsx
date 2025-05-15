@@ -1,35 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import './ProfilePage.css';
 import Navbar from "../components/NavBar";
+import { getAccessToken } from '../authHelpers';
 
 const ProfilePage = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    bio: '',
+    unique_student_id: '',
+    about: '',
+    interests: '',
     skills: '',
-    image: '',
+    education: '',
+    social_media: '',
   });
 
+  const [profileId, setProfileId] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [portfolio, setPortfolio] = useState(null);
+  const [certificate, setCertificate] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
 
-  const token = 'your-jwt-token-here';
+  const token = getAccessToken();
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/profile/', {
-          headers: { 'Authorization': `Bearer ${token}` },
+        const res = await fetch('http://127.0.0.1:8000/api/userProfile/me/', {
+          headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         setUserProfile(data);
+        setProfileId(data.id);
+
         setFormData({
-          name: data.name || '',
-          bio: data.bio || '',
+          unique_student_id: data.unique_student_id || '',
+          about: data.about || '',
+          interests: data.interests || '',
           skills: data.skills || '',
-          image: data.image || '',
+          education: data.education || '',
+          social_media: data.social_media || '',
         });
       } catch (err) {
         setError(err.message);
@@ -42,26 +53,41 @@ const ProfilePage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    if (name === 'profile_picture') setProfilePicture(files[0]);
+    if (name === 'portfolio') setPortfolio(files[0]);
+    if (name === 'certificate') setCertificate(files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
+    const form = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      form.append(key, value);
+    });
+
+    if (profilePicture) form.append('profile_picture', profilePicture);
+    if (portfolio) form.append('portfolio', portfolio);
+    if (certificate) form.append('certificate', certificate);
+
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/profile/', {
-        method: 'POST', // or 'PUT'
+      const res = await fetch(`http://127.0.0.1:8000/api/userProfile/profiles/${profileId}/`, {
+        method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: form,
       });
 
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
       const data = await res.json();
       setResponse(data);
-      setUserProfile(data); // update display after saving
-      alert('Profile saved successfully!');
+      setUserProfile(data);
+      alert('Profile updated successfully!');
     } catch (err) {
       setError(err.message);
     }
@@ -75,21 +101,43 @@ const ProfilePage = () => {
 
         {userProfile ? (
           <div className="profile-card">
-            <img src={userProfile.image || 'https://via.placeholder.com/150'} alt="Profile" />
-            <h2>{userProfile.name}</h2>
-            <p><strong>Bio:</strong> {userProfile.bio}</p>
+            <h2>{userProfile.unique_student_id}</h2>
+            <p><strong>About:</strong> {userProfile.about}</p>
+            <p><strong>Interests:</strong> {userProfile.interests}</p>
             <p><strong>Skills:</strong> {userProfile.skills}</p>
+            <p><strong>Education:</strong> {userProfile.education}</p>
+            <p><strong>Social Media:</strong> {userProfile.social_media}</p>
+            {userProfile.profile_picture && (
+              <img
+                src={`http://127.0.0.1:8000${userProfile.profile_picture}`}
+                alt="Profile"
+                width="150"
+                style={{ marginTop: '10px' }}
+              />
+            )}
           </div>
         ) : (
           <p>Loading profile...</p>
         )}
 
         <h2>Edit Profile</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-          <input type="text" name="skills" placeholder="Skills (e.g. React, Django)" value={formData.skills} onChange={handleChange} required />
-          <textarea name="bio" placeholder="Short Bio" value={formData.bio} onChange={handleChange} required />
-          <input type="text" name="image" placeholder="Profile Image URL" value={formData.image} onChange={handleChange} />
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <input type="text" name="unique_student_id" placeholder="Student ID" value={formData.unique_student_id} onChange={handleChange} required />
+          <textarea name="about" placeholder="About" value={formData.about} onChange={handleChange} required />
+          <input type="text" name="interests" placeholder="Interests" value={formData.interests} onChange={handleChange} required />
+          <input type="text" name="skills" placeholder="Skills" value={formData.skills} onChange={handleChange} required />
+          <input type="text" name="education" placeholder="Education" value={formData.education} onChange={handleChange} required />
+          <input type="url" name="social_media" placeholder="Social Media URL" value={formData.social_media} onChange={handleChange} />
+
+          <label>Profile Picture:</label>
+          <input type="file" name="profile_picture" accept="image/*" onChange={handleFileChange} />
+
+          <label>Portfolio File:</label>
+          <input type="file" name="portfolio" onChange={handleFileChange} />
+
+          <label>Certificate File:</label>
+          <input type="file" name="certificate" onChange={handleFileChange} />
+
           <button type="submit" className="submit-button">Save Profile</button>
         </form>
 

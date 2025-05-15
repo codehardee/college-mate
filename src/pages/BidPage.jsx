@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './BidPage.css';
 import Navbar from "../components/NavBar";
+import { AUTH_TOKEN } from '../authToken';
+import { useLocation } from 'react-router-dom';
+
 
 const BidPage = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const projectIdFromURL = queryParams.get('project_id');
+
   const [formData, setFormData] = useState({
-    project: '',
+    project: projectIdFromURL || '',
     bid_amount: '',
     student: '',
     message: '',
@@ -13,7 +20,7 @@ const BidPage = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null); // added this
 
-  const token = 'your_jwt_token_here';
+  const token = AUTH_TOKEN;
 
   const handleChange = (e) => {
     setFormData({
@@ -73,12 +80,13 @@ const BidPage = () => {
             />
             <input
               type="number"
-              name="amount"
+              name="bid_amount"
               placeholder="Bid Amount"
-              value={formData.amount}
+              value={formData.bid_amount}
               onChange={handleChange}
               required
             />
+
             <textarea
               name="message"
               placeholder="Why should they pick you?"

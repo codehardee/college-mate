@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/NavBar';
-import './ProjectPage.css'; // reuse the card styles
+import './ProjectPage.css'; 
+import { AUTH_TOKEN } from '../authToken';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
-  const token = 'YOUR_JWT_TOKEN_HERE'; // replace with actual token
+  const token = AUTH_TOKEN;
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/uploadProject/projects/${id}/`, {
@@ -16,6 +17,14 @@ const ProjectDetailPage = () => {
       .then(data => setProject(data))
       .catch(err => console.error(err));
   }, [id]);
+
+  useEffect(() => {
+  if (project) {
+    console.log("Project Title:", project.title);
+    console.log("Skills Required:", project.skills);
+    console.log("Project Scope:", project.scope);
+  }
+}, [project]);
 
   if (!project) return <p>Loading project details...</p>;
 

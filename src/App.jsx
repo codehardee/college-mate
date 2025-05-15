@@ -4,14 +4,20 @@ import Home from "./pages/Home";
 import ProjectPage from "./pages/ProjectPage";
 import BidPage from "./pages/BidPage";
 
+import Navbar from './components/NavBar';
+
 import BlogsPage from './pages/BlogsPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 
+import SignUpPage from './pages/SignUpPages';
+import LoginPage from './pages/LoginPage';
+
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<ProjectPage />} />
@@ -21,6 +27,9 @@ function App() {
 
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/blogs/:slug" element={<BlogDetailPage />} />
+
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>
   );
